@@ -1,1 +1,3 @@
 # LLM-with-mixed-type-data
+
+Large Language Models (LLMs) are increasingly applied to biomedical research involving mixed-type data, such as structured EHRs, unstructured clinical text, and medical imaging (MRI, Echo, PET, CT). These models support integrative analysis by learning from multimodal inputs, enabling novel insights in disease prediction and personalized medicine. Emerging software frameworks combine LLMs with domain-specific tools to facilitate scalable and interpretable biomedical applications.
