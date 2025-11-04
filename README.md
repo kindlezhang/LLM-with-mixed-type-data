@@ -22,6 +22,7 @@ In the field of AI health﻿, there is a severe scarcity of domain-specific data
 - ** Biobank 
 - ** PhysioNet https://physionet.org/about/database/#overview
                https://physionet.org/content/mimic-cxr/2.1.0/
+               https://physionet.org/content/mimic-cxr-jpg/2.1.0/
                TN-Mammo: A Multi-view Mammography Dataset for Breast Density Classification https://physionet.org/content/tn-mammo-breast-density/1.0.0/TNMammo/#files-panel
                RadVLM Instruction Dataset https://physionet.org/content/radvlm-instruction-dataset/1.0.0/
                https://stanfordmlgroup.github.io/competitions/chexpert/
