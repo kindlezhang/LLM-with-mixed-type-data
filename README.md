@@ -20,7 +20,7 @@ In the field of AI health﻿, there is a severe scarcity of domain-specific data
 - ** ImageNet
 - ** RadImagenet
 - ** Biobank 
-- ** PhysioNet https://physionet.org/about/database/#overview
+- ** PhysioNet(MIMIC-CXR) https://physionet.org/about/database/#overview
                https://physionet.org/content/mimic-cxr/2.1.0/
                https://physionet.org/content/mimic-cxr-jpg/2.1.0/
                TN-Mammo: A Multi-view Mammography Dataset for Breast Density Classification https://physionet.org/content/tn-mammo-breast-density/1.0.0/TNMammo/#files-panel
@@ -31,6 +31,7 @@ In the field of AI health﻿, there is a severe scarcity of domain-specific data
             https://www.kaggle.com/datasets/programmer3/digital-twin-ehr-imaging-and-iot-data
 - ** shaip https://www.shaip.com/
 - ** github awesome public datasets
+- ** CheXpert 
 
 # Steps in the Study
 
