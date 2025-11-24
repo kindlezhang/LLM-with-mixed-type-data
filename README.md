@@ -63,3 +63,10 @@ This study addresses the critical challenge of data scarcity in medical AI by le
 
 
 
+Image Encoder: 使用 Swin Transformer (替换 CLIP)。
+
+Connector: 使用简单的 MLP (替换 Q-Former，或者保留 Q-Former)。
+
+LLM: 使用 Llama-3 或 Vicuna。
+
+Memory 模块：你可以把 Memory 模块加在 Connector 之后，或者作为 Prompt 的一部分拼接到 LLM 的输入里（RAG 模式）。
