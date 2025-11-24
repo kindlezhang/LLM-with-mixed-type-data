@@ -15,12 +15,22 @@ from torch.utils.data import Dataset
 from transformers import Trainer, TrainingArguments, DataCollatorWithPadding
 from typing import List, Dict, Any
 
+# siglip:
+# siglip model can be downloaded here
+# https://hf-mirror.com/google/siglip-base-patch16-224
+
+# qwen2.5-0.5b:
+# https://hf-mirror.com/Qwen/Qwen2.5-0.5B-Instruct
+
+# pretrain image data:
+# https://hf-mirror.com/datasets/liuhaotian/LLaVA-CC3M-Pretrain-595K
+
 
 
 class VLMConfig(PretrainedConfig):
     model_type = "vlm_model"
-    def __init__(self,llm_model_path = '/home/user/Downloads/Qwen2.5-0.5B-Instruct',
-                 vision_model_path = '/home/user/Downloads/siglip-so400m-patch14-384',
+    def __init__(self,llm_model_path = './Qwen2.5-0.5B-Instruct',
+                 vision_model_path = './siglip-so400m-patch14-384',
                  freeze_vision_model = True,
                  image_pad_num = 49,
                 **kwargs):
@@ -156,15 +166,17 @@ class MyDataCollator:
         
         
 if __name__ == '__main__':
-    config = VLMConfig(vision_model_path='/home/user/wyf/siglip-base-patch16-224', image_pad_num=49)
-    model = VLM(config).cuda()
+    config = VLMConfig(vision_model_path='./siglip-base-patch16-224', image_pad_num=49)
+    # model = VLM(config).cuda()
+    device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+    model = VLM(config).to(device)
     print(model)
     print(f'模型参数量为：{sum(p.numel() for p in model.parameters() if p.requires_grad)}')
-    images_path = './dataset/LLaVA-CC3M-Pretrain-595K/images'
-    data_path = './dataset/Chinese-LLaVA-Vision-Instructions/LLaVA-CC3M-Pretrain-595K/chat-translated.json'
+    images_path = './data/LLaVA-CC3M-Pretrain-595K/images'
+    data_path = './data/LLaVA-CC3M-Pretrain-595K/chat.json'
     tokenizer = AutoTokenizer.from_pretrained(config.llm_model_path)
     processor = AutoProcessor.from_pretrained(config.vision_model_path)
-    output_dir = 'save/pretrain' 
+    output_dir = './save/pretrain' 
     args = TrainingArguments(
         output_dir=output_dir,
         do_train=True,
@@ -173,7 +185,8 @@ if __name__ == '__main__':
         num_train_epochs=5,
         save_steps=500,
         save_total_limit=2,
-        fp16=True,
+        fp16=False,        # mps不支持 fp16
+        bf16=True,         # mps支持 bf16
         gradient_accumulation_steps=8,
         logging_steps=100,
         report_to='tensorboard',
