@@ -8,4 +8,6 @@ snapshot_download(
     local_dir_use_symlinks=False
 )
 
-# unzip -q images.zip -d images/
+# cp images.zip /content/
+# cd /content
+# 7z x -aos -bsp2 images.zip -oimages/
