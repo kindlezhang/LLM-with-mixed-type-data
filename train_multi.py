@@ -201,7 +201,7 @@ if __name__ == '__main__':
     )
     
     trainer.train(resume_from_checkpoint=False)
-    trainer.save_model('save/pretrain')
+    trainer.save_model('/save/pretrain')
     trainer.save_state()
     
     
