@@ -30,7 +30,7 @@ from typing import List, Dict, Any
 class VLMConfig(PretrainedConfig):
     model_type = "vlm_model"
     def __init__(self,llm_model_path = '/content/drive/MyDrive/Qwen2.5-0.5B-Instruct',
-                 vision_model_path = '/content/drive/MyDrive/siglip-so400m-patch14-384',
+                 vision_model_path = '/content/drive/MyDrive/siglip-base-patch16-224',
                  freeze_vision_model = True,
                  image_pad_num = 49,
                 **kwargs):
@@ -166,7 +166,7 @@ class MyDataCollator:
         
         
 if __name__ == '__main__':
-    config = VLMConfig(vision_model_path='./siglip-base-patch16-224', image_pad_num=49)
+    config = VLMConfig(vision_model_path='/content/drive/MyDrive/siglip-base-patch16-224', image_pad_num=49)
     model = VLM(config).cuda()
     # device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
     # model = VLM(config).to(device)
